@@ -80,6 +80,9 @@ class Product:
 
     @classmethod
     def show(cls):
+        '''
+        shows all products
+        '''
         for item in cls.data:
             print(item)
 
@@ -105,6 +108,10 @@ class Basket:
             pass
 
     def add(self, ean_code):
+        '''
+        adds product to basket
+        param: ean_code: ean_code that client can add to basket
+        '''
         for item in Product.data:
             if item.ean_code == ean_code:
                 self.total_price += float(item.price)
@@ -112,6 +119,10 @@ class Basket:
             f.write(f'{ean_code}\n')
 
     def delete(self, ean_code):
+        '''
+        remove product from basket
+        param: ean_code: ean_code that client can remove from basket
+        '''
         ean_list = []
         with open('basket_data.txt', 'r', encoding='utf-8') as ptr:
             for line in ptr:
@@ -126,6 +137,9 @@ class Basket:
 
 
     def show(self):
+        '''
+        shows product in basket
+        '''
         print('Товары в корзине:')
         with open('basket_data.txt', 'r', encoding='utf-8') as ptr:
             for line in ptr:
